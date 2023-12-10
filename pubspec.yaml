@@ -39,7 +39,8 @@ dependencies:
   fl_chart: ^0.65.0
   flexible_calendar: ^1.0.1
   google_fonts: ^6.1.0
-  #fluttertoast: ^8.0.2
+  fluttertoast: ^8.0.2
+  anim_search_bar: ^2.0.3
 
 dev_dependencies:
   flutter_test:

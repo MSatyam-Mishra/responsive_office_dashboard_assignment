@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'model.dart';
 
+ScrollController scrollController = ScrollController();
+
 List sideMenuItems = [
   SideMenu(image: "home-2-bold.svg", name: "Home"),
   SideMenu(image: "people.svg", name: "Employees"),

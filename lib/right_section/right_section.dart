@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_office_dashboard_assignment/center_section/center_section.dart';
 import 'package:responsive_office_dashboard_assignment/constants/colors.dart';
 import 'package:responsive_office_dashboard_assignment/constants/geometry.dart';
+import 'package:responsive_office_dashboard_assignment/data/const_data.dart';
 
 class RightSection extends StatefulWidget {
   const RightSection({Key? key}) : super(key: key);
@@ -18,6 +19,8 @@ class _RightSectionState extends State<RightSection> {
       padding: EdgeInsets.only(left: 30, right: 30),
       color: righBgcolor,
       child: SingleChildScrollView(
+        controller: scrollController,
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(

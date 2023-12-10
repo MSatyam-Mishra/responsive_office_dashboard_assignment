@@ -3,6 +3,7 @@
 import 'package:flexible_calendar/flexible_calendar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_office_dashboard_assignment/constants/geometry.dart';
@@ -23,6 +24,8 @@ class _CenterSectionState extends State<CenterSection> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: scrollController,
+      physics: BouncingScrollPhysics(),
       child: Padding(
         padding: EdgeInsets.all(defaulPadding),
         child: Column(
@@ -58,27 +61,30 @@ class _CenterSectionState extends State<CenterSection> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               defaultSpace,
-                              const Text(
-                                "Top Rating \nProject",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 25),
-                              ),
+                              Text("Top Rating \nProject",
+                                  style: GoogleFonts.dmSans(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w700)),
                               defaultSpace,
-                              const Text(
+                              Text(
                                 "Trending project and high rating \nProject Created by team",
-                                style: TextStyle(color: Colors.white),
+                                style: GoogleFonts.dmSans(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400),
                               ),
                               defaultSpace,
-                              GestureDetector(
+                              InkWell(
                                 onTap: () {
-                                  // Fluttertoast.showToast(
-                                  //     msg: "Please visit Website to Learn More",
-                                  //     toastLength: Toast.LENGTH_SHORT,
-                                  //     gravity: ToastGravity.CENTER,
-                                  //     timeInSecForIosWeb: 1,
-                                  //     backgroundColor: Colors.red,
-                                  //     textColor: Colors.white,
-                                  //     fontSize: 16.0);
+                                  Fluttertoast.showToast(
+                                      msg: "Please visit Website to Learn More",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.purple[300],
+                                      textColor: Colors.white,
+                                      fontSize: 16.0);
                                 },
                                 child: Container(
                                   width: 140,
@@ -307,29 +313,41 @@ class AnniversaryWidget extends StatelessWidget {
         Positioned(
           bottom: 20,
           left: 20,
-          child: Container(
-            // width: double.infinity,
-            padding:
-                const EdgeInsets.only(left: 25, right: 25, top: 7, bottom: 7),
-            decoration: BoxDecoration(
-                color: reminderCardButtonColor,
-                borderRadius: BorderRadius.circular(10)),
-            child: Row(children: [
-              SvgPicture.asset(
-                "assets/send.svg",
-                color: Colors.white,
-                width: 25,
-                height: 25,
-              ),
-              defaultHSpace,
-              const Text(
-                "Anniversary Wishing",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500),
-              )
-            ]),
+          child: InkWell(
+            onTap: () {
+              Fluttertoast.showToast(
+                  msg: "Sent Anniversary Email to 3 Employees",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.purple[300],
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+            },
+            child: Container(
+              // width: double.infinity,
+              padding:
+                  const EdgeInsets.only(left: 25, right: 25, top: 7, bottom: 7),
+              decoration: BoxDecoration(
+                  color: reminderCardButtonColor,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(children: [
+                SvgPicture.asset(
+                  "assets/send.svg",
+                  color: Colors.white,
+                  width: 25,
+                  height: 25,
+                ),
+                defaultHSpace,
+                const Text(
+                  "Anniversary Wishing",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                )
+              ]),
+            ),
           ),
         )
       ]),
@@ -441,29 +459,41 @@ class BirthdayWidget extends StatelessWidget {
         Positioned(
           bottom: 20,
           left: 20,
-          child: Container(
-            // width: 200,
-            padding:
-                const EdgeInsets.only(left: 25, right: 25, top: 7, bottom: 7),
-            decoration: BoxDecoration(
-                color: reminderCardButtonColor,
-                borderRadius: BorderRadius.circular(10)),
-            child: Row(children: [
-              SvgPicture.asset(
-                "assets/send.svg",
-                color: Colors.white,
-                width: 25,
-                height: 25,
-              ),
-              defaultHSpace,
-              const Text(
-                "Birthday Wishing",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500),
-              )
-            ]),
+          child: InkWell(
+            onTap: () {
+              Fluttertoast.showToast(
+                  msg: "Sent Birthday Email to 3 Employees",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.purple[300],
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+            },
+            child: Container(
+              // width: 200,
+              padding:
+                  const EdgeInsets.only(left: 25, right: 25, top: 7, bottom: 7),
+              decoration: BoxDecoration(
+                  color: reminderCardButtonColor,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(children: [
+                SvgPicture.asset(
+                  "assets/send.svg",
+                  color: Colors.white,
+                  width: 25,
+                  height: 25,
+                ),
+                defaultHSpace,
+                const Text(
+                  "Birthday Wishing",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                )
+              ]),
+            ),
           ),
         )
       ]),
@@ -497,7 +527,7 @@ class CalendarWidget extends StatelessWidget {
         isSelectedOnlyOneDay: false,
         colorOfDayInMonth: Colors.black,
         colorOfSelectedDay: Colors.purple,
-        styleOfDay: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+        styleOfDay: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
       ),
     );
   }
@@ -550,7 +580,8 @@ class CreatorWidget extends StatelessWidget {
             Container(
               height: 180 - 30,
               child: ListView.builder(
-                  // controller: scrollController,
+                  controller: scrollController,
+                  physics: BouncingScrollPhysics(),
                   itemCount: 3,
                   itemBuilder: (context, i) {
                     return Container(
@@ -626,11 +657,18 @@ class CreatorWidget extends StatelessWidget {
   }
 }
 
-class ProjectWidget extends StatelessWidget {
+class ProjectWidget extends StatefulWidget {
   const ProjectWidget({
     super.key,
   });
 
+  @override
+  State<ProjectWidget> createState() => _ProjectWidgetState();
+}
+
+int _selectedindex = 0;
+
+class _ProjectWidgetState extends State<ProjectWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -655,75 +693,83 @@ class ProjectWidget extends StatelessWidget {
             Container(
               height: 180,
               child: ListView.builder(
-                  //controller: scrollController,
+                  controller: scrollController,
+                  physics: BouncingScrollPhysics(),
                   itemCount: projectImages.length,
                   itemBuilder: (context, i) {
-                    return Container(
-                      decoration: BoxDecoration(
-                          color: i == 0
-                              ? cardSelectedOptionColor
-                              : cardUnselectedOptionColor,
-                          borderRadius: BorderRadius.circular(15)),
-                      padding: const EdgeInsets.all(10),
-                      margin: EdgeInsets.only(
-                          bottom: 10,
-                          left: i == 0 ? 10 : 20,
-                          right: i == 0 ? 10 : 20),
-                      height: 60,
-                      child: (Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10)),
-                            width: 30,
-                            height: 30,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                projectImages[i],
-                                fit: BoxFit.fill,
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          _selectedindex = i;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: i == _selectedindex
+                                ? cardSelectedOptionColor
+                                : cardUnselectedOptionColor,
+                            borderRadius: BorderRadius.circular(15)),
+                        padding: const EdgeInsets.all(10),
+                        margin: EdgeInsets.only(
+                            bottom: 10,
+                            left: i == _selectedindex ? 10 : 20,
+                            right: i == _selectedindex ? 10 : 20),
+                        height: 60,
+                        child: (Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10)),
+                              width: 30,
+                              height: 30,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(
+                                  projectImages[i],
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                             ),
-                          ),
-                          const Column(
-                            children: [
-                              Text(
-                                "Technology behind the Blockchain",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              Row(
-                                children: [
-                                  Text("Project #1",
-                                      style: TextStyle(color: Colors.white)),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Icon(
-                                    Icons.circle_sharp,
-                                    size: 5,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "See project deatails",
-                                    style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        color: Colors.white),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          const Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                            size: 20,
-                          )
-                        ],
-                      )),
+                            const Column(
+                              children: [
+                                Text(
+                                  "Technology behind the Blockchain",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                Row(
+                                  children: [
+                                    Text("Project #1",
+                                        style: TextStyle(color: Colors.white)),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Icons.circle_sharp,
+                                      size: 5,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "See project deatails",
+                                      style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: Colors.white),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                            const Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                              size: 20,
+                            )
+                          ],
+                        )),
+                      ),
                     );
                   }),
             )

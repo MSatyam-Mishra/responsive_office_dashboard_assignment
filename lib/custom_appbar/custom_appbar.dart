@@ -1,5 +1,8 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
+import 'dart:io';
+import 'dart:ui' as ui;
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_office_dashboard_assignment/constants/geometry.dart';
@@ -18,6 +21,56 @@ class CustomAppBar extends StatefulWidget {
 
 class _CustomAppBarState extends State<CustomAppBar> {
   int _currentSelectedButton = 0;
+  DateTime selectedDate = DateTime.now();
+  TextEditingController textController = TextEditingController();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
+  void _confirmTurnOff(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirmation'),
+          content: Text('Are you sure you want to close this Tab?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Platform.isFuchsia ? _closeTab() : closeApp();
+              },
+              child: Text('Confirm'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _closeTab() {}
+
+  void closeApp() {
+    exit(0);
+  }
+
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -41,24 +94,33 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     children: [
                       Container(
                         width: deviceWidth / 4,
+                        height: 40,
                         padding: EdgeInsets.only(
                             left: 20, top: 7.5, bottom: 7.5, right: 20),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: searchBarBgColor),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Search",
-                              style: TextStyle(color: searchTextColor),
-                            ),
-                            Icon(
-                              Icons.search_rounded,
-                              color: searchTextColor,
-                            )
-                          ],
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                        child: TextField(
+                          textAlignVertical: TextAlignVertical.center,
+                          // textAlign: TextAlign.center,
+                          style: TextStyle(color: searchTextColor),
+                          decoration: InputDecoration(
+                              // icon: Icon(
+                              //   Icons.search,
+                              //   color: searchTextColor,
+                              // ),
+                              hintText: 'Search',
+                              hintStyle: TextStyle(color: searchTextColor),
+                              suffixIcon: Icon(
+                                Icons.search,
+                                color: searchTextColor,
+                              ),
+                              border: InputBorder.none
+                              // border: OutlineInputBorder(
+                              //   borderRadius:
+                              //       BorderRadius.circular(8.0),
+                              // ),
+                              ),
                         ),
                       ),
                       defaultHSpace,
@@ -70,12 +132,20 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           children: [
                             Row(
                               children: [
-                                SvgPicture.asset("assets/calendar-linear.svg"),
+                                InkWell(
+                                    onTap: () {
+                                      _selectDate(context);
+                                    },
+                                    child: SvgPicture.asset(
+                                        "assets/calendar-linear.svg")),
                                 defaultHSpace,
                                 SvgPicture.asset(
                                     "assets/notification-outline.svg"),
                                 defaultHSpace,
-                                SvgPicture.asset("assets/poweroff.svg")
+                                InkWell(
+                                    onTap: () => _confirmTurnOff(context),
+                                    child:
+                                        SvgPicture.asset("assets/poweroff.svg"))
                               ],
                             ),
                             defaultHSpace,
@@ -122,7 +192,24 @@ class _CustomAppBarState extends State<CustomAppBar> {
                         ),
                         Row(
                           children: [
-                            Icon(Icons.search_rounded),
+                            AnimSearchBar(
+                              // suffixIcon:
+                              color: bgColor,
+                              textFieldColor: searchBarBgColor,
+                              style: TextStyle(color: bgColor2),
+                              textFieldIconColor: bgColor2,
+                              searchIconColor: bgColor,
+                              boxShadow: false,
+                              prefixIcon: Icon(Icons.search_rounded),
+                              width: 200,
+                              textController: textController,
+                              onSuffixTap: () {
+                                setState(() {
+                                  textController.clear();
+                                });
+                              },
+                              onSubmitted: (String) {},
+                            ),
                             defaultHSpace,
                             Container(
                               // // width: searchWidth,
@@ -133,13 +220,20 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                 children: [
                                   Row(
                                     children: [
-                                      SvgPicture.asset(
-                                          "assets/calendar-linear.svg"),
+                                      InkWell(
+                                          onTap: () {
+                                            _selectDate(context);
+                                          },
+                                          child: SvgPicture.asset(
+                                              "assets/calendar-linear.svg")),
                                       defaultHSpace,
                                       SvgPicture.asset(
                                           "assets/notification-outline.svg"),
                                       defaultHSpace,
-                                      SvgPicture.asset("assets/poweroff.svg")
+                                      InkWell(
+                                          onTap: () => _confirmTurnOff(context),
+                                          child: SvgPicture.asset(
+                                              "assets/poweroff.svg"))
                                     ],
                                   ),
                                   defaultHSpace,
@@ -174,33 +268,42 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           },
                           icon: Image.asset(
                             "assets/logo.png",
-                            width: 60,
+                            width: 70,
                           ),
                         ),
                         Text("Home"),
                         Row(
                           children: [
                             Container(
+                              height: 40,
                               width: deviceWidth / 4,
                               padding: EdgeInsets.only(
                                   left: 20, top: 7.5, bottom: 7.5, right: 20),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: searchBarBgColor),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Search",
-                                    style: TextStyle(color: searchTextColor),
-                                  ),
-                                  Icon(
-                                    Icons.search_rounded,
-                                    color: searchTextColor,
-                                  )
-                                ],
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                              child: TextField(
+                                textAlignVertical: TextAlignVertical.center,
+                                // textAlign: TextAlign.center,
+                                style: TextStyle(color: searchTextColor),
+                                decoration: InputDecoration(
+                                    // icon: Icon(
+                                    //   Icons.search,
+                                    //   color: searchTextColor,
+                                    // ),
+                                    hintText: 'Search',
+                                    hintStyle:
+                                        TextStyle(color: searchTextColor),
+                                    suffixIcon: Icon(
+                                      Icons.search,
+                                      color: searchTextColor,
+                                    ),
+                                    border: InputBorder.none
+                                    // border: OutlineInputBorder(
+                                    //   borderRadius:
+                                    //       BorderRadius.circular(8.0),
+                                    // ),
+                                    ),
                               ),
                             ),
                             defaultHSpace,
@@ -213,13 +316,20 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                 children: [
                                   Row(
                                     children: [
-                                      SvgPicture.asset(
-                                          "assets/calendar-linear.svg"),
+                                      InkWell(
+                                          onTap: () {
+                                            _selectDate(context);
+                                          },
+                                          child: SvgPicture.asset(
+                                              "assets/calendar-linear.svg")),
                                       defaultHSpace,
                                       SvgPicture.asset(
                                           "assets/notification-outline.svg"),
                                       defaultHSpace,
-                                      SvgPicture.asset("assets/poweroff.svg")
+                                      InkWell(
+                                          onTap: () => _confirmTurnOff(context),
+                                          child: SvgPicture.asset(
+                                              "assets/poweroff.svg"))
                                     ],
                                   ),
                                   defaultHSpace,

@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_office_dashboard_assignment/constants/geometry.dart';
 
 import '../constants/colors.dart';
 
@@ -363,49 +364,62 @@ class LineChartSample1State extends State<LineChartSample1> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.circle,
-                          color: graphColor1,
-                          size: 15,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          'Pending\nDone',
-                          style: TextStyle(
-                            color: graphColor1,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
+                    Text(
+                      "Over All Performance \nThe Years",
+                      style: TextStyle(
+                          color: Color(0xff313a5e),
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
                     ),
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Icon(
-                          Icons.circle,
-                          color: graphColor2,
-                          size: 15,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.circle,
+                              color: graphColor1,
+                              size: 15,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'Pending\nDone',
+                              style: TextStyle(
+                                color: graphColor1,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          'Project \nDone',
-                          style: TextStyle(
-                            color: graphColor2,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1,
-                          ),
-                          textAlign: TextAlign.left,
+                        defaultHSpace,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.circle,
+                              color: graphColor2,
+                              size: 15,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'Project \nDone',
+                              style: TextStyle(
+                                color: graphColor2,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],
                         ),
                       ],
                     ),

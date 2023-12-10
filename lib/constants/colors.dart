@@ -7,7 +7,7 @@ Color sidebarSelectedOptionColor = Color(0xfff1f1ef);
 Color sidebarHighlightedMenuColor = Color(0xffe3e9fe);
 Color profileRingColor = Color(0xffffab1c);
 Color seperatorColor = Color(0xffcfcfcf);
-
+Color bgColor2 = Color(0xfff7f5fb);
 //body colors
 List<Color> bannerGradientColor = [Color(0xff3b1acf), Color(0xfff9aead)];
 Color bgColor = Color(0xfff1f1ef);
