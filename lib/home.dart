@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: sidebarHighlightedMenuColor,
+      backgroundColor: bgColor,
       drawer: const CustomDrawer(),
       appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 100),

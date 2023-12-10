@@ -1,8 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class LineChartEx extends StatelessWidget {
-  const LineChartEx({required this.isShowingMainData});
+import '../constants/colors.dart';
+
+class _LineChart extends StatelessWidget {
+  const _LineChart({required this.isShowingMainData});
 
   final bool isShowingMainData;
 
@@ -62,7 +64,6 @@ class LineChartEx extends StatelessWidget {
 
   List<LineChartBarData> get lineBarsData1 => [
         lineChartBarData1_1,
-        lineChartBarData1_2,
         lineChartBarData1_3,
       ];
 
@@ -93,25 +94,29 @@ class LineChartEx extends StatelessWidget {
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w500,
+      color: Colors.grey,
       fontSize: 14,
     );
     String text;
     switch (value.toInt()) {
       case 1:
-        text = '1m';
+        text = '0';
         break;
       case 2:
-        text = '2m';
+        text = '10';
         break;
       case 3:
-        text = '3m';
+        text = '20';
         break;
       case 4:
-        text = '5m';
+        text = '30';
         break;
       case 5:
-        text = '6m';
+        text = '40';
+        break;
+      case 6:
+        text = '50';
         break;
       default:
         return Container();
@@ -135,13 +140,29 @@ class LineChartEx extends StatelessWidget {
     Widget text;
     switch (value.toInt()) {
       case 2:
-        text = const Text('SEPT', style: style);
+        text = const Text('2015',
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500));
         break;
-      case 7:
-        text = const Text('OCT', style: style);
+      case 4:
+        text = const Text('2015',
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500));
+        break;
+      case 6:
+        text = const Text('2016',
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500));
+        break;
+
+      case 8:
+        text = const Text('2017',
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500));
+        break;
+      case 10:
+        text = const Text('2018',
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500));
         break;
       case 12:
-        text = const Text('DEC', style: style);
+        text = const Text('2019',
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500));
         break;
       default:
         text = const Text('');
@@ -167,7 +188,7 @@ class LineChartEx extends StatelessWidget {
   FlBorderData get borderData => FlBorderData(
         show: true,
         border: Border(
-          bottom: BorderSide(color: Color(0xFF50E4FF), width: 4),
+          bottom: BorderSide(color: graphColor1, width: 4),
           left: const BorderSide(color: Colors.transparent),
           right: const BorderSide(color: Colors.transparent),
           top: const BorderSide(color: Colors.transparent),
@@ -176,31 +197,39 @@ class LineChartEx extends StatelessWidget {
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
         isCurved: true,
-        color: Color(0xFF3BFF49),
-        barWidth: 8,
+        color: graphColor2,
+        barWidth: 4,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
         spots: const [
           FlSpot(1, 1),
-          FlSpot(3, 1.5),
-          FlSpot(5, 1.4),
-          FlSpot(7, 3.4),
-          FlSpot(10, 2),
+          FlSpot(2, 2.3),
+          FlSpot(3, 3),
+          FlSpot(4, 2),
+          FlSpot(5, 2.5),
+          FlSpot(6, 5),
+          FlSpot(7, 4),
+          FlSpot(8, 3.5),
+          FlSpot(9, 4.5),
+          FlSpot(10, 3),
+          FlSpot(11, 2.7),
           FlSpot(12, 2.2),
-          FlSpot(13, 1.8),
+          // FlSpot(13, 1.8),
+          // FlSpot(14, 2.5),
+          // FlSpot(15, 2),
         ],
       );
 
   LineChartBarData get lineChartBarData1_2 => LineChartBarData(
         isCurved: true,
-        color: Color(0xFFFF3AF2),
+        color: graphColor1,
         barWidth: 8,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(
           show: false,
-          color: Color(0xFFFF3AF2).withOpacity(0),
+          color: graphColor1,
         ),
         spots: const [
           FlSpot(1, 1),
@@ -214,24 +243,34 @@ class LineChartEx extends StatelessWidget {
 
   LineChartBarData get lineChartBarData1_3 => LineChartBarData(
         isCurved: true,
-        color: Color(0xFF50E4FF),
-        barWidth: 8,
+        color: graphColor1,
+        barWidth: 4,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
         spots: const [
-          FlSpot(1, 2.8),
-          FlSpot(3, 1.9),
-          FlSpot(6, 3),
-          FlSpot(10, 1.3),
-          FlSpot(13, 2.5),
+          FlSpot(1, 2),
+          FlSpot(2, 3.3),
+          FlSpot(3, 3),
+          FlSpot(3, 3),
+          FlSpot(5, 2.5),
+          FlSpot(7, 5),
+          FlSpot(8, 4),
+          FlSpot(9, 3.5),
+          FlSpot(10, 4.5),
+          FlSpot(11, 3),
+          FlSpot(12, 2.7),
+          // FlSpot(13, 2.2),
+          // FlSpot(14, 1.8),
+          // FlSpot(15, 2.5),
+          // FlSpot(16, 2),
         ],
       );
 
   LineChartBarData get lineChartBarData2_1 => LineChartBarData(
         isCurved: true,
         curveSmoothness: 0,
-        color: Color(0xFF3BFF49).withOpacity(0.5),
+        color: graphColor1,
         barWidth: 4,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
@@ -249,13 +288,13 @@ class LineChartEx extends StatelessWidget {
 
   LineChartBarData get lineChartBarData2_2 => LineChartBarData(
         isCurved: true,
-        color: Color(0xFFFF3AF2).withOpacity(0.5),
+        color: graphColor1,
         barWidth: 4,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(
           show: true,
-          color: Color(0xFFFF3AF2).withOpacity(0.2),
+          color: graphColor1,
         ),
         spots: const [
           FlSpot(1, 1),
@@ -270,7 +309,7 @@ class LineChartEx extends StatelessWidget {
   LineChartBarData get lineChartBarData2_3 => LineChartBarData(
         isCurved: true,
         curveSmoothness: 0,
-        color: Color(0xFF50E4FF).withOpacity(0.5),
+        color: graphColor1,
         barWidth: 2,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: true),
@@ -303,52 +342,102 @@ class LineChartSample1State extends State<LineChartSample1> {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.23,
-      child: Stack(
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              const SizedBox(
-                height: 37,
-              ),
-              const Text(
-                'Monthly Sales',
-                style: TextStyle(
-                  color: Color(0xFF50E4FF),
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2,
+    return Container(
+      height: 250,
+      width: double.infinity,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white,
+          border: Border.all(
+              color: Color.fromARGB(29, 211, 211, 211).withOpacity(0.8))),
+      child: AspectRatio(
+        aspectRatio: 1.23,
+        child: Stack(
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                const SizedBox(
+                  height: 37,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 37,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16, left: 6),
-                  child: LineChartEx(isShowingMainData: isShowingMainData),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Icons.circle,
+                          color: graphColor1,
+                          size: 15,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'Pending\nDone',
+                          style: TextStyle(
+                            color: graphColor1,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Icons.circle,
+                          color: graphColor2,
+                          size: 15,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'Project \nDone',
+                          style: TextStyle(
+                            color: graphColor2,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-            ],
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.refresh,
-              color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+                const SizedBox(
+                  height: 37,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 16, left: 6),
+                    child: _LineChart(isShowingMainData: isShowingMainData),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+              ],
             ),
-            onPressed: () {
-              setState(() {
-                isShowingMainData = !isShowingMainData;
-              });
-            },
-          )
-        ],
+            IconButton(
+              icon: Icon(
+                Icons.refresh,
+                color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+              ),
+              onPressed: () {
+                setState(() {
+                  isShowingMainData = !isShowingMainData;
+                });
+              },
+            )
+          ],
+        ),
       ),
     );
   }

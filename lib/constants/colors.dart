@@ -10,6 +10,7 @@ Color seperatorColor = Color(0xffcfcfcf);
 
 //body colors
 List<Color> bannerGradientColor = [Color(0xff3b1acf), Color(0xfff9aead)];
+Color bgColor = Color(0xfff1f1ef);
 //start=> bottom-Left    end top-right
 Color bannerButtonColor = Color(0xff261b4c);
 Color cardColor = Color(0xff111c44);
@@ -28,6 +29,7 @@ Color remindercardProfileBgColor = Color(0xff4a435c);
 Color reminderCardProfileRingColor = Color(0xff5a4488);
 Color reminderCardButtonColor = Color(0xffac6aec);
 Color reminderCardSubheadingColor = Color(0xff6e628d);
+Color righBgcolor = Color(0xff1b254b);
 
 //top bar colors
 Color notificationBadgeColor = Color(0xffffa800);

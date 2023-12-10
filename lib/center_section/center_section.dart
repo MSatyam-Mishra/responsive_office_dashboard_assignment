@@ -1,6 +1,8 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
+import 'package:flexible_calendar/flexible_calendar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:responsive_office_dashboard_assignment/constants/geometry.dart';
 import 'package:responsive_office_dashboard_assignment/responsive_layout.dart';
 
@@ -101,22 +103,323 @@ class _CenterSectionState extends State<CenterSection> {
                 ? Row(
                     children: [
                       Expanded(flex: 1, child: ProjectWidget()),
-                      defaultSpace,
                       Expanded(flex: 1, child: CreatorWidget())
                     ],
                   )
                 : Column(
                     children: [
-                      ProjectWidget(),
-                      defaultSpace,
+                      ResponsiveLayout.istablet(context)
+                          ? Row(
+                              children: [
+                                Expanded(flex: 1, child: ProjectWidget()),
+                                defaultSpace,
+                                Expanded(flex: 1, child: CreatorWidget()),
+                              ],
+                            )
+                          : ProjectWidget(),
                       CreatorWidget(),
                       defaultSpace,
-                      LineChartSample1()
+                      LineChartSample1(),
+                      CalendarWidget(),
+                      defaultSpace,
+                      ResponsiveLayout.istablet(context)
+                          ? Row(
+                              children: [
+                                Expanded(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 7.5),
+                                      child: BirthdayWidget(),
+                                    )),
+                                Expanded(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 7.5),
+                                      child: AnniversaryWidget(),
+                                    ))
+                              ],
+                            )
+                          : BirthdayWidget(),
                     ],
                   ),
             defaultSpace,
+            (ResponsiveLayout.isComputer(context) ||
+                    ResponsiveLayout.isLargetablet(context)
+                ? LineChartSample1()
+                : defaultSpace)
           ],
         ),
+      ),
+    );
+  }
+}
+
+class AnniversaryWidget extends StatelessWidget {
+  const AnniversaryWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 250,
+      decoration: BoxDecoration(
+        color: reminderCardColor,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Stack(children: [
+        Positioned(left: 25, top: 5, child: Image.asset("assets/star48.png")),
+        Positioned(right: 5, top: 25, child: Image.asset("assets/star48.png")),
+        Positioned(
+            left: 80,
+            top: 20,
+            child: Text(
+              "Anniversary",
+              style: TextStyle(color: Colors.white),
+            )),
+        Positioned(
+          top: 70,
+          left: 30,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 2, color: reminderCardProfileRingColor),
+                          shape: BoxShape.circle),
+                      width: 50,
+                      height: 50,
+                      child: Image.asset("assets/boi.png")),
+                  defaultHSpace,
+                  Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 2, color: reminderCardProfileRingColor),
+                          shape: BoxShape.circle),
+                      width: 50,
+                      height: 50,
+                      child: Image.asset("assets/girl_av.png")),
+                  defaultHSpace,
+                  Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 2, color: reminderCardProfileRingColor),
+                          shape: BoxShape.circle),
+                      width: 50,
+                      height: 50,
+                      child: Image.asset("assets/girl_av.png")),
+                ],
+              ),
+              defaultSpace,
+              defaultSpace,
+              Row(
+                children: [
+                  Text(
+                    "Total",
+                    style: TextStyle(color: reminderCardSubheadingColor),
+                  ),
+                  defaultHSpace,
+                  Container(
+                      height: 30, width: 3, color: reminderCardSubheadingColor),
+                  defaultHSpace,
+                  Text(
+                    "3",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  defaultHSpace,
+                  Container(
+                      height: 30, width: 3, color: reminderCardSubheadingColor),
+                  defaultHSpace
+                ],
+              ),
+              defaultSpace,
+              defaultSpace,
+            ],
+          ),
+        ),
+        Positioned(
+          bottom: 20,
+          left: 20,
+          child: Container(
+            width: 200,
+            padding: EdgeInsets.only(left: 25, right: 25, top: 7, bottom: 7),
+            decoration: BoxDecoration(
+                color: reminderCardButtonColor,
+                borderRadius: BorderRadius.circular(10)),
+            child: Row(children: [
+              SvgPicture.asset(
+                "assets/send.svg",
+                color: Colors.white,
+                width: 25,
+                height: 25,
+              ),
+              defaultHSpace,
+              Text(
+                "Anniversary Wishing",
+                style: TextStyle(color: Colors.white),
+              )
+            ]),
+          ),
+        )
+      ]),
+    );
+  }
+}
+
+class BirthdayWidget extends StatelessWidget {
+  const BirthdayWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 250,
+      decoration: BoxDecoration(
+        color: reminderCardColor,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Stack(children: [
+        Positioned(left: 25, top: 5, child: Image.asset("assets/star48.png")),
+        Positioned(right: 5, top: 25, child: Image.asset("assets/star48.png")),
+        Positioned(
+            left: 80,
+            top: 20,
+            child: Text(
+              "Today Birthday",
+              style: TextStyle(color: Colors.white),
+            )),
+        Positioned(
+          top: 70,
+          left: 30,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 2, color: reminderCardProfileRingColor),
+                          shape: BoxShape.circle),
+                      width: 50,
+                      height: 50,
+                      child: Image.asset("assets/boi.png")),
+                  defaultHSpace,
+                  Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 2, color: reminderCardProfileRingColor),
+                          shape: BoxShape.circle),
+                      width: 50,
+                      height: 50,
+                      child: Image.asset("assets/girl_av.png")),
+                ],
+              ),
+              defaultSpace,
+              defaultSpace,
+              Row(
+                children: [
+                  Text(
+                    "Total",
+                    style: TextStyle(color: reminderCardSubheadingColor),
+                  ),
+                  defaultHSpace,
+                  Container(
+                      height: 30, width: 3, color: reminderCardSubheadingColor),
+                  defaultHSpace,
+                  Text(
+                    "2",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  defaultHSpace,
+                  Container(
+                      height: 30, width: 3, color: reminderCardSubheadingColor),
+                  defaultHSpace
+                ],
+              ),
+              defaultSpace,
+              defaultSpace,
+            ],
+          ),
+        ),
+        Positioned(
+          top: 60,
+          left: 60,
+          child: SvgPicture.asset(
+            "assets/birthday-cake.svg",
+            width: 20,
+            height: 20,
+          ),
+        ),
+        Positioned(
+          top: 60,
+          left: 125,
+          child: SvgPicture.asset(
+            "assets/birthday-cake.svg",
+            width: 20,
+            height: 20,
+          ),
+        ),
+        Positioned(
+          bottom: 20,
+          left: 20,
+          child: Container(
+            width: 200,
+            padding: EdgeInsets.only(left: 25, right: 25, top: 7, bottom: 7),
+            decoration: BoxDecoration(
+                color: reminderCardButtonColor,
+                borderRadius: BorderRadius.circular(10)),
+            child: Row(children: [
+              SvgPicture.asset(
+                "assets/send.svg",
+                color: Colors.white,
+                width: 25,
+                height: 25,
+              ),
+              defaultHSpace,
+              Text(
+                "Birthday Wishing",
+                style: TextStyle(color: Colors.white),
+              )
+            ]),
+          ),
+        )
+      ]),
+    );
+  }
+}
+
+class CalendarWidget extends StatelessWidget {
+  const CalendarWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15),
+      //height: deviceWidth * 0.22,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25),
+        color: Colors.white,
+      ),
+      child: FlexibleCalendarView(
+        textPreMonthTitle: "Dec",
+        decorationOfSelectedDay: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(25)),
+        colorDayInAnotherMonth: Colors.grey,
+        borderBackgroundStartDay: BorderRadius.only(
+            topLeft: Radius.circular(25), bottomLeft: Radius.circular(25)),
+        borderBackgroundEndDay: BorderRadius.only(
+            topRight: Radius.circular(25), bottomRight: Radius.circular(25)),
+        isSelectedOnlyOneDay: false,
+        colorOfDayInMonth: Colors.black,
+        colorOfSelectedDay: Colors.purple,
+        styleOfDay: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
       ),
     );
   }
@@ -129,7 +432,7 @@ class CreatorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //padding: EdgeInsets.all(15),
-
+      margin: EdgeInsets.only(left: 7.5),
       height: 250,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15), color: cardColor),
@@ -253,6 +556,7 @@ class ProjectWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(right: 7.5),
       //padding: EdgeInsets.all(15),
       // width: widgetWidth,
       height: 250,
