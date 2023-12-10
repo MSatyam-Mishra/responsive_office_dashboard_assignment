@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
 class SideMenu {
-  String image;
+  IconData icon;
   String name;
-  SideMenu({required this.image, required this.name});
+  SideMenu({required this.icon, required this.name});
 }
 
 class CreatorList {

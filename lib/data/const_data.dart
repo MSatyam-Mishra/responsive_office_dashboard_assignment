@@ -5,11 +5,11 @@ import 'model.dart';
 ScrollController scrollController = ScrollController();
 
 List sideMenuItems = [
-  SideMenu(image: "home-2-bold.svg", name: "Home"),
-  SideMenu(image: "people.svg", name: "Employees"),
-  SideMenu(image: "todo-list.svg", name: "Attendance"),
-  SideMenu(image: "calendar-linear.svg", name: "Summary"),
-  SideMenu(image: "info-outline.svg", name: "Information"),
+  SideMenu(icon: Icons.home_rounded, name: "Home"),
+  SideMenu(icon: Icons.people_alt_rounded, name: "Employees"),
+  SideMenu(icon: Icons.checklist_sharp, name: "Attendance"),
+  SideMenu(icon: Icons.calendar_month_sharp, name: "Summary"),
+  SideMenu(icon: Icons.info_outlined, name: "Information"),
 ];
 
 List topMenus = [

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:responsive_office_dashboard_assignment/center_section/center_section.dart';
+import 'package:responsive_office_dashboard_assignment/ui/center_section/center_section.dart';
 import 'package:responsive_office_dashboard_assignment/constants/colors.dart';
 import 'package:responsive_office_dashboard_assignment/constants/geometry.dart';
 import 'package:responsive_office_dashboard_assignment/data/const_data.dart';
+import 'package:responsive_office_dashboard_assignment/widget/anniversary_widget.dart';
+import 'package:responsive_office_dashboard_assignment/widget/birthday_widget.dart';
+import 'package:responsive_office_dashboard_assignment/widget/calendar_widget.dart';
 
 class RightSection extends StatefulWidget {
   const RightSection({Key? key}) : super(key: key);

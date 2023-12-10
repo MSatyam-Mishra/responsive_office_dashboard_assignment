@@ -1,14 +1,14 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
-import 'package:responsive_office_dashboard_assignment/center_section/center_section.dart';
+import 'package:responsive_office_dashboard_assignment/ui/center_section/center_section.dart';
 import 'package:responsive_office_dashboard_assignment/constants/colors.dart';
-import 'package:responsive_office_dashboard_assignment/custom_appbar/custom_appbar.dart';
-import 'package:responsive_office_dashboard_assignment/left_section/left_section.dart';
-import 'package:responsive_office_dashboard_assignment/responsive_layout.dart';
-import 'package:responsive_office_dashboard_assignment/right_section/right_section.dart';
+import 'package:responsive_office_dashboard_assignment/ui/custom_appbar/custom_appbar.dart';
 
-import 'custom_drawer.dart';
+import 'package:responsive_office_dashboard_assignment/responsive_layout.dart';
+import 'package:responsive_office_dashboard_assignment/ui/right_section/right_section.dart';
+
+import 'ui/custom_drawer/custom_drawer.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

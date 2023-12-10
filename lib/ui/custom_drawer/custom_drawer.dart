@@ -5,8 +5,8 @@ import 'package:responsive_office_dashboard_assignment/constants/geometry.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_office_dashboard_assignment/responsive_layout.dart';
 
-import 'constants/colors.dart';
-import 'data/const_data.dart';
+import '../../constants/colors.dart';
+import '../../data/const_data.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -116,8 +116,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                             leading: Padding(
                                               padding:
                                                   EdgeInsets.all(defaulPadding),
-                                              child: SvgPicture.asset(
-                                                  "assets/${sideMenuItems[i].image}"),
+                                              child:
+                                                  Icon(sideMenuItems[i].icon),
                                             ),
                                             shape: const RoundedRectangleBorder(
                                               borderRadius: BorderRadius.only(

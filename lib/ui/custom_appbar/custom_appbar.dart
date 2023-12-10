@@ -6,11 +6,11 @@ import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_office_dashboard_assignment/constants/geometry.dart';
-import 'package:responsive_office_dashboard_assignment/custom_drawer.dart';
+import 'package:responsive_office_dashboard_assignment/ui/custom_drawer/custom_drawer.dart';
 import 'package:responsive_office_dashboard_assignment/data/const_data.dart';
 import 'package:responsive_office_dashboard_assignment/responsive_layout.dart';
 
-import '../constants/colors.dart';
+import '../../constants/colors.dart';
 
 class CustomAppBar extends StatefulWidget {
   const CustomAppBar({Key? key}) : super(key: key);
