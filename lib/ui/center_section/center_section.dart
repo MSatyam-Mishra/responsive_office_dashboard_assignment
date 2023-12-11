@@ -158,7 +158,7 @@ class _CenterSectionState extends State<CenterSection> {
                                         child: const CreatorWidget())),
                               ],
                             )
-                          : defaultSpace,
+                          : SizedBox(height: 0),
                       ResponsiveLayout.isPhone(context)
                           ? Column(
                               children: [

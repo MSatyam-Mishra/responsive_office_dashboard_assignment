@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:responsive_office_dashboard_assignment/constants/geometry.dart';
 import 'package:responsive_office_dashboard_assignment/ui/custom_drawer/custom_drawer.dart';
-import 'package:responsive_office_dashboard_assignment/data/const_data.dart';
+
 import 'package:responsive_office_dashboard_assignment/responsive_layout.dart';
 
 import '../../constants/colors.dart';
@@ -125,7 +125,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       ),
                       defaultHSpace,
                       Container(
-                        // // width: searchWidth,
+                        width: (ResponsiveLayout.isComputer(context) ||
+                                ResponsiveLayout.isLargetablet(context))
+                            ? deviceWidth * 0.22
+                            : double.maxFinite,
                         //  padding: EdgeInsets.only(right: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -183,10 +186,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
                               width: 40,
                               height: 40,
                               decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: appBarProfileBGColor,
+                                  // shape: BoxShape.circle,
+                                  // color: appBarProfileBGColor,
                                   image: DecorationImage(
-                                      image: AssetImage("assets/boi.png"))),
+                                      image: AssetImage("assets/logo.png"))),
                             ),
                           ),
                         ),
@@ -201,7 +204,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                               searchIconColor: bgColor,
                               boxShadow: false,
                               prefixIcon: Icon(Icons.search_rounded),
-                              width: 200,
+                              width: 140,
                               textController: textController,
                               onSuffixTap: () {
                                 setState(() {
@@ -214,6 +217,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
                             Container(
                               // // width: searchWidth,
                               //  padding: EdgeInsets.only(right: 15),
+                              //    width: (ResponsiveLayout.isComputer(context) ||
+                              //     ResponsiveLayout.isLargetablet(context))
+                              // ? deviceWidth * 0.22
+                              // : double.maxFinite,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -237,19 +244,19 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                     ],
                                   ),
                                   defaultHSpace,
-                                  // Container(
-                                  //   width: 40,
-                                  //   height: 40,
-                                  //   decoration: BoxDecoration(
-                                  //       shape: BoxShape.circle,
-                                  //       color: appBarProfileBGColor,
-                                  //       image: DecorationImage(
-                                  //           image:
-                                  //               AssetImage("assets/boi.png"))),
-                                  // ),
-                                  // SizedBox(
-                                  //   width: 20,
-                                  // )
+                                  Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: appBarProfileBGColor,
+                                        image: DecorationImage(
+                                            image:
+                                                AssetImage("assets/boi.png"))),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  )
                                 ],
                               ),
                             )
@@ -271,7 +278,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                             width: 70,
                           ),
                         ),
-                        Text("Home"),
+                        //Text("Home"),
                         Row(
                           children: [
                             Container(
@@ -308,6 +315,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
                             ),
                             defaultHSpace,
                             Container(
+                              width: (ResponsiveLayout.isComputer(context) ||
+                                      ResponsiveLayout.isLargetablet(context) ||
+                                      ResponsiveLayout.istablet(context))
+                                  ? deviceWidth * 0.22
+                                  : double.maxFinite,
                               // // width: searchWidth,
                               //  padding: EdgeInsets.only(right: 15),
                               child: Row(
